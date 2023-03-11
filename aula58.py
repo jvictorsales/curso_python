@@ -34,15 +34,22 @@ while True:
             remove_item = int(remove_item)
 
             if remove_item < 0:
-                print('Índice inválido, tente novamente.')
+                print('Índice negativo não permitido, tente novamente.')
                 continue
 
             print(f'Produto "{lista_compras[remove_item]}" removido.')
             del (lista_compras[remove_item])
             print()
 
-        except:
-            print('Índice inválido, tente novamente.')
+        except ValueError:
+            print('Índice inválido, digite apenas números inteiros.')
+            print()
+        except IndexError:
+            print('Este índice não existe na lista de compras. Digite um índice válido.')
+            print()
+        except Exception:
+            print('Erro desconhecido, tente novamente.')
+            print()
 
     elif opcao.startswith('l'):
         os.system('cls')
