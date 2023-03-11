@@ -13,50 +13,57 @@ lista_compras = []
 while True:
     print('Selecione uma opção')
 
-    try:
-        opcao = input('[i]nserir [a]pagar [l]istar [s]air: ').lower()
+    opcao = input('[i]nserir [a]pagar [l]istar [s]air: ').lower()
+
+    if opcao.startswith('i'):
         os.system('cls')
+        add_item = input('Digite o produto: ')
+        lista_compras.append(add_item)
+        print(f'Produto "{add_item}" adicionado na lista de compras.')
+        print()
 
-        if opcao.startswith('i'):
-            add_item = input('Digite o produto: ')
-            print(f'Produto "{add_item}" adicionado na lista de compras.')
-            lista_compras.append(add_item)
-            print()
+    elif opcao.startswith('a'):
+        os.system('cls')
+        if lista_compras == []:
+            print('Lista vazia, não tem o que apagar.')
+            continue
 
-        elif opcao.startswith('a'):
-            if lista_compras == []:
-                print('Lista vazia, não tem o que apagar.')
-                continue
+        remove_item = input('Digite o índice do produto para apagar: ')
 
-            remove_item = input('Digite o índice do produto para apagar: ')
+        try:
             remove_item = int(remove_item)
-            
+
             if remove_item < 0:
                 print('Índice inválido, tente novamente.')
                 continue
 
+            del (lista_compras[remove_item])
             print(f'Produto "{lista_compras[remove_item]}" removido.')
-            del(lista_compras[remove_item])
             print()
 
-        elif opcao.startswith('l'):
-            if lista_compras == []:
-                print('Lista vazia, não tem o que exibir.')
-                continue
-            for indice, produto in enumerate(lista_compras):
-                print(indice, produto)
-            print()
+        except:
+            print('Índice inválido, tente novamente.')
 
-        elif opcao.startswith('s'):
-            print('Encerrando... ')
-            print()
-            break
-            
-        else:
-            print('Opção escolhida inválida! Tente novamente.')
+    elif opcao.startswith('l'):
+        os.system('cls')
+        if lista_compras == []:
+            print('Lista vazia, não tem o que exibir.')
+            continue
 
-    except:
-        print('Índice inválido, tente novamente.')
+        for indice, produto in enumerate(lista_compras):
+            print(indice, produto)
+
+        print()
+
+    elif opcao.startswith('s'):
+        os.system('cls')
+        print('Encerrando... ')
+        print()
+        break
+
+    else:
+        print('Opção escolhida inválida! Tente novamente.')
+
 
 # lista_compras = []
 
@@ -72,7 +79,7 @@ while True:
 #     print('2- Apagar um item da lista')
 #     print('3- Exibir a sua lista')
 #     print('4- Sair')
-    
+
 #     opcao = input('Escolha a opção deseja do Menu [1-4]: ')
 #     print()
 
@@ -92,7 +99,7 @@ while True:
 
 #         elif opcao == 3:
 #             exibir_lista()
-            
+
 #         elif opcao == 4:
 #             print('Saindo ...')
 #             print('Segue abaixo a sua lista de compras completa:')
