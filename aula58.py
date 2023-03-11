@@ -37,8 +37,8 @@ while True:
                 print('Índice inválido, tente novamente.')
                 continue
 
-            del (lista_compras[remove_item])
             print(f'Produto "{lista_compras[remove_item]}" removido.')
+            del (lista_compras[remove_item])
             print()
 
         except:
