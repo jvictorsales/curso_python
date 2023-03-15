@@ -1,6 +1,7 @@
 import random
 
 for _ in range(100):
+    
     # Calculando o primeiro digito
     nove_digitos = ''
     for i in range(9):
